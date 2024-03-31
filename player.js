@@ -21,7 +21,6 @@ let playList = {
 			artistName: "50 cent",
 			songTitle: "In da Club,",
 			fileUrl: "...",
-			isHot: false,
 		},
 		{
 			coverImageUrl: "./img/image-3.png",
