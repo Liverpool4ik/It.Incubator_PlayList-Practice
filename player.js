@@ -40,6 +40,46 @@ let playlist = {
 	],
 };
 
+let playlist2 = {
+	title: "Hip-Hop Hits",
+	coverImageUrl: "img/coverImage.png",
+	tracksInfo: {
+		totalTracksCount: 4,
+		tracksDurationInSeconds: 733,
+	},
+	trackList: [
+		{
+			trackImageUrl: "img/image-1.png",
+			artistName: "Eminem",
+			songTitle: "Rap God",
+			trackUrl: "/musicTracks/track-1.mp3",
+			isHot: true,
+		},
+		{
+			trackImageUrl: "img/image-2.png",
+			artistName: "50 cent",
+			songTitle: "In da Club",
+			trackUrl: "/musicTracks/track-2.mp3",
+			isHot: false,
+		},
+
+		{
+			trackImageUrl: "img/image-13png",
+			artistName: "DMX",
+			songTitle: "X Gon' Give It to Ya",
+			trackUrl: "/musicTracks/track-3.mp3",
+			isHot: false,
+		},
+
+		{
+			trackImageUrl: "img/image-4.png",
+			artistName: "Eminem feat 50 cent, Cashis, Lloyd Banks",
+			songTitle: "You don't know",
+			trackUrl: "/musicTracks/track-4.mp3",
+			isHot: false,
+		},
+	],
+};
 /**
 
 // (BEFORE  changing "playList" onto "playListForRendering" in function renderPlayList --
@@ -91,26 +131,21 @@ function renderPlaylist(playListForRendering) {
 // playListTitle Element.append(... playList.title и т.д. ==>> ... playListForRendering.title и т.д. )) ======================================================
 
 renderPlaylist(playlist);
+renderPlaylist(playlist2);
 
 function renderPlaylist(playListForRendering) {
-	let playListTitleElement = document.createElement("h2");
-	playListTitleElement.append(playListForRendering.title);
-	document.body.append(playListTitleElement);
+	renderPlayListHeader(playListForRendering);
 
-	let playListCoverImageElement = document.createElement("img");
-	playListCoverImageElement.src = playListForRendering.coverImageUrl;
-	document.body.append(playListCoverImageElement);
+	renderTrackList(playListForRendering.trackList[0]);
+	renderTrackList(playListForRendering.trackList[1]);
+	renderTrackList(playListForRendering.trackList[2]);
+	renderTrackList(playListForRendering.trackList[3]);
 
-	let tracksListElement = document.createElement("ul");
+	// document.body.append(tracksListElement);
 
-	let track0Element = document.createElement("li");
-	track0Element.append(
-		playListForRendering.trackList[0].artistName +
-			" - " +
-			playListForRendering.trackList[0].songTitle
-	);
-	tracksListElement.append(track0Element);
+	// let tracksListElement = document.createElement("ul");
 
+	/* 
 	let track1Element = document.createElement("li");
 	track1Element.append(
 		playListForRendering.trackList[1].artistName +
@@ -136,4 +171,26 @@ function renderPlaylist(playListForRendering) {
 	tracksListElement.append(track3Element);
 
 	document.body.append(tracksListElement);
+}
+*/
+
+	function renderPlayListHeader(playListForRendering) {
+		let playListTitleElement = document.createElement("h2");
+		playListTitleElement.append(playListForRendering.title);
+		document.body.append(playListTitleElement);
+
+		let playListCoverImageElement = document.createElement("img");
+		playListCoverImageElement.src = playListForRendering.coverImageUrl;
+		document.body.append(playListCoverImageElement);
+	}
+
+	function renderTrackList(inputDataPlayListTracks) {
+		let trackElement = document.createElement("div");
+		trackElement.append(
+			inputDataPlayListTracks.artistName +
+				" - " +
+				inputDataPlayListTracks.songTitle
+		);
+		document.body.append(trackElement);
+	}
 }
